@@ -92,3 +92,35 @@ Does the model acknowledge complexity, uncertainty, and its own limitations?
 - Score independently before comparing models to prevent anchoring bias
 - Re-run the same prompt at least twice to account for output variance
 - This rubric applies to business/professional tasks; separate rubrics exist for code and creative writing
+
+
+---
+
+## Reasoning Evaluation Flowchart
+
+This diagram shows the decision process used to assign a reasoning score.
+
+```mermaid
+flowchart TD
+    A[Start: Read model output] --> B{Does it answer\nthe question?}
+    B -- No --> C[Score: 1-2\nFails the task]
+    B -- Yes --> D{Is there visible\nreasoning structure?}
+    D -- No --> E[Score: 3-4\nAnswer correct, no reasoning shown]
+    D -- Yes --> F{Are the reasoning\nsteps logically connected?}
+    F -- No --> G[Score: 5-6\nReasoning visible but gaps exist]
+    F -- Yes --> H{Does it handle\ncounterfactuals or edge cases?}
+    H -- No --> I[Score: 7-8\nSolid reasoning, limited nuance]
+    H -- Yes --> J{Does it acknowledge\nuncertainty where appropriate?}
+    J -- No --> K[Score: 8-9\nStrong reasoning, minor overconfidence]
+    J -- Yes --> L[Score: 9-10\nExceptional reasoning quality]
+```
+
+---
+
+## Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| v1.0 | June 2025 | Initial rubric — 4 dimensions, 10-point scale |
+| v1.1 | June 2025 | Added Sample Scorecard with real evaluation data |
+| v1.2 | June 2025 | Added Reasoning Evaluation Flowchart (Mermaid) |
