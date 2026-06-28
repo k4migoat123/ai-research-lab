@@ -119,3 +119,44 @@ PS line
 5. Document the change and result
 
 Never change more than one variable per iteration — otherwise you can't identify what fixed the problem.
+
+
+---
+
+## XML Prompt Architecture Diagram
+
+This diagram shows how the XML framework layers build on each other to produce structured, reliable output.
+
+```mermaid
+flowchart LR
+    A[Raw Task Idea] --> B[role tag\nWho is the AI?]
+    B --> C[context tag\nWhat does it need to know?]
+    C --> D[task tag\nWhat exactly must it do?]
+    D --> E[constraints tag\nWhat are the boundaries?]
+    E --> F[output_format tag\nHow should it respond?]
+    F --> G[Structured Output]
+
+    style A fill:#333,color:#fff
+    style G fill:#1a7f37,color:#fff
+    style B fill:#0d419d,color:#fff
+    style C fill:#0d419d,color:#fff
+    style D fill:#0d419d,color:#fff
+    style E fill:#0d419d,color:#fff
+    style F fill:#0d419d,color:#fff
+```
+
+**Why each layer matters:**
+- Without `role` - model defaults to generic assistant mode
+- - Without `context` - model may hallucinate missing background
+  - - Without `constraints` - model ignores format or length requirements
+    - - Without `output_format` - results vary wildly between runs
+     
+      - ---
+
+      ## Version History
+
+      | Version | Date | Changes |
+      |---------|------|---------|
+      | v1.0 | June 2025 | Initial XML framework documentation |
+      | v1.1 | June 2025 | Added element reference table and iteration protocol |
+      | v1.2 | June 2025 | Added prompt architecture flowchart (Mermaid) |
